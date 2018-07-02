@@ -2,7 +2,7 @@
 
 use Mockery as m;
 
-class ValueSerializerTest extends PHPUnit_Framework_TestCase
+class ValueSerializerTest extends \PHPUnit\Framework\TestCase
 {
     public function tearDown()
     {

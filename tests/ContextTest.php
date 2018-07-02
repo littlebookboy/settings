@@ -2,7 +2,7 @@
 
 use Mockery as m;
 
-class ContextTest extends PHPUnit_Framework_TestCase
+class ContextTest extends \PHPUnit\Framework\TestCase
 {
     public function tearDown()
     {

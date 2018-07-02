@@ -2,7 +2,7 @@
 
 use Mockery as m;
 
-class SettingsTest extends PHPUnit_Framework_TestCase
+class SettingsTest extends \PHPUnit\Framework\TestCase
 {
     public function tearDown()
     {
@@ -242,6 +242,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings = new \Krucas\Settings\Settings($mock, $g, $valueSerializer);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetUsesEncrypter()
@@ -263,6 +264,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setEncrypter($encrypter);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetSkipsEncrypter()
@@ -284,6 +286,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setEncrypter($encrypter);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetUsesCache()
@@ -305,6 +308,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setCache($cache);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetSkipsCache()
@@ -326,6 +330,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setCache($cache);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetFiresEvents()
@@ -350,6 +355,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setDispatcher($dispatcher);
 
         $settings->context($context)->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testSetSkipsEvents()
@@ -371,6 +377,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setDispatcher($dispatcher);
 
         $settings->set('key', 'value');
+        $this->assertNotNull($settings, 'key');
     }
 
     public function testForgetForgetsRepositoryValue()
@@ -386,6 +393,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings = new \Krucas\Settings\Settings($mock, $g, $valueSerializer);
 
         $settings->forget('key');
+        $this->assertNull(data_get($settings, 'key'));
     }
 
     public function testForgetUsesCache()
@@ -406,6 +414,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setCache($cache);
 
         $settings->forget('key');
+        $this->assertNull(data_get($settings, 'key'));
     }
 
     public function testForgetSkipsCache()
@@ -426,6 +435,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setCache($cache);
 
         $settings->forget('key');
+        $this->assertNull(data_get($settings, 'key'));
     }
 
     public function testForgetFiresEvents()
@@ -449,6 +459,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setDispatcher($dispatcher);
 
         $settings->context($context)->forget('key');
+        $this->assertNull(data_get($settings, 'key'));
     }
 
     public function testForgetSkipsEvents()
@@ -469,6 +480,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase
         $settings->setDispatcher($dispatcher);
 
         $settings->forget('key');
+        $this->assertNull(data_get($settings, 'key'));
     }
 
     public function testSetSameKeysForDifferentContexts()
