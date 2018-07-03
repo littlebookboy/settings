@@ -4,6 +4,10 @@
   "description": "Persistent settings package for Laravel framework.",
   "authors": [
     {
+      "name": "Edvinas Kručas",
+      "email": "edv.krucas@gmail.com"
+    },
+    {
       "name": "Gene Su",
       "email": "kevin2pig@gmail.com"
     }
